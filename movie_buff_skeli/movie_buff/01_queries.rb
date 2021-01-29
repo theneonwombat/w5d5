@@ -20,7 +20,7 @@ def harrison_ford
   #
   # Find the id and title of all movies in which Harrison Ford
   # appeared but not as a lead actor
-  Movie.select(:id, :title).joins(castings: :actor).where(actors: { name: "Harrison Ford" }).where.not(castings: {ord: 1}) #.order("movies.id asc").distinct
+  Movie.select(:id, :title).joins({castings: :actor}).where(actors: { name: "Harrison Ford" }).where.not(castings: {ord: 1}) #.order("movies.id asc").distinct
 end
 
 def biggest_cast
@@ -54,7 +54,7 @@ def directed_by_one_of(them)
   # Find the id and title of all the movies directed by one of 'them'.
 
   
-  Movie.select(:id, :title).joins(:director).where('actors.name IN (?)', them)
+  Movie.select(:id, :title).joins(:director).where(actors: { name: them } ) #where('actors.name IN (?)', them)
   #could we have used syntax from line 52 somehow??
 end
 
