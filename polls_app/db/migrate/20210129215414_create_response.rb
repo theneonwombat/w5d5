@@ -4,6 +4,7 @@ class CreateResponse < ActiveRecord::Migration[5.2]
       t.integer :user_id, null: false
       t.integer :answer_id, null: false
 
+      t.timestamps
     end
     add_index :responses, :user_id
     add_index :responses, :answer_id

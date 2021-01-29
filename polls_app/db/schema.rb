@@ -18,12 +18,16 @@ ActiveRecord::Schema.define(version: 2021_01_29_215414) do
   create_table "answer_choices", force: :cascade do |t|
     t.integer "question_id", null: false
     t.text "answer_text", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_answer_choices_on_question_id"
   end
 
   create_table "polls", force: :cascade do |t|
     t.integer "user_id", null: false
     t.text "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["title"], name: "index_polls_on_title"
     t.index ["user_id"], name: "index_polls_on_user_id"
   end
@@ -39,12 +43,16 @@ ActiveRecord::Schema.define(version: 2021_01_29_215414) do
   create_table "responses", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "answer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["answer_id"], name: "index_responses_on_answer_id"
     t.index ["user_id"], name: "index_responses_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
